@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
-  const [tasks, setTasks] = React.useState(true);
+  const [tasks, setTasks] = React.useState(false);
 
   return (
     <div className={classes.container}>

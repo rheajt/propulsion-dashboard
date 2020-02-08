@@ -1,7 +1,8 @@
 {
-  "name": "propulsion",
+  "name": "propulsion-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rheajt.github.io/propulsion-dashboard",
   "dependencies": {
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
