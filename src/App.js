@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from '@material-ui/core';
+import withRoot from './styles/withRoot';
+import Time from './components/Time';
+import TaskButton from './components/TaskButton';
+import SettingsButton from './components/SettingsButton';
+import Drawer from './components/Drawer';
+import TaskForm from './components/TaskForm';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    backgroundImage: 'url(https://source.unsplash.com/daily)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    color: theme.palette.common.white,
+    textShadow: '0 1px 5px rgba(0,0,0,.1)',
+  },
+  main: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    position: 'relative',
+  },
+}));
 
 function App() {
+  const classes = useStyles();
+  const [tasks, setTasks] = React.useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.container}>
+      <div className={classes.main}>
+        <Time />
+        <TaskButton onClick={() => setTasks(true)} />
+        <SettingsButton />
+      </div>
+      <Drawer open={tasks} setTasks={setTasks}>
+        <TaskForm />
+      </Drawer>
     </div>
   );
 }
 
-export default App;
+export default withRoot(App);
